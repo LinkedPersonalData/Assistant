@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Assistant</string>
+    <string name="menu_settings">Settings</string>
+    <string name="client_key">INSERT_CLIENT_KEY_HERE</string>
+    <string name="client_secret">INSERT_CLIENT_SECRET_HERE</string>
+    <string name="client_basic_auth">INSERT_BASIC_AUTH_HERE</string>
+    <string name="client_scope">funf_write</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="problem_contacting_server">There was a problem contacting the server. Please try again later.</string>
+    <string name="default_funf_password">INSERT_DEFAULT_FUNF_PASSWORD_HERE</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_debug">DebugActivity</string>
+    <string name="main_pipeline_config">        {
+			"@type": "edu.mit.media.openpds.client.funf.OpenPDSPipeline",
+			"GCMSenderId": "INSERT_GCM_SENDER_ID_HERE",
+			"schedules": {
+				"archive": {
+					"strict": false,
+					"interval": 900
+				},
+				"upload": {
+					"strict": false,
+					"interval": 1800
+				}
+			},
+			"data": [			
+				{
+					"@type": "edu.mit.media.funf.probe.builtin.SimpleLocationProbe",
+				    "maxWaitTime": 30,
+				    "goodEnoughAccuracy": 20,
+				    "useCache": false,
+				    "@schedule": {
+					    "strict": true,
+					    "interval": 300,
+					    "opportunistic": true
+					}
+				},
+				{
+					"@type": "edu.mit.media.funf.probe.builtin.AudioMediaProbe",
+				    "@schedule": {
+					    "strict": false,
+					    "interval": 3600,
+					    "opportunistic": true
+					}
+				},
+				{
+					"@type": "edu.mit.media.funf.probe.builtin.InternalAudioMediaProbe",
+				    "@schedule": {
+					    "strict": false,
+					    "interval": 3600,
+					    "opportunistic": true
+					}
+				}
+			]
+		}</string>
+    <string name="title_activity_survey">Survey</string>
+    <string name="title_activity_pds">My PDS</string>
+    <string name="gcm_sender_id">INSERT_GCM_SENDER_ID_HERE</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_place_list">Places</string>
+    <string name="title_place_detail">Place Detail</string>
+    <string name="suggested_places">Suggested Places</string>
+    <string name="login_subtitle">Please sign in with your LinkedPersonalData.org credentials</string>
+</resources>

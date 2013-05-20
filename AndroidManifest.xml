@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.linkedpersonaldata.assistant"
+    android:versionCode="3"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="16" />
+    <!-- Launching -->
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+
+    <!-- Backing up database to SD card -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Backing up to the web -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- All probes -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Activity Probe, Screen Probe -->
+    <!-- NONE -->
+
+
+    <!-- Location probe -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Wifi probe -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- GCM -->
+    <permission
+        android:name="org.linkedpersonaldata.assistant.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="org.linkedpersonaldata.assistant.permission.C2D_MESSAGE" />
+    <!-- App receives GCM messages. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="org.linkedpersonaldata.assistant.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>                
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <category android:name="android.intent.category.BROWSABLE"></category>
+                <data android:host="assistant" android:scheme="lpd"></data>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.linkedpersonaldata.assistant.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName="org.linkedpersonaldata.assistant.MainActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+
+        <service
+            android:name="edu.mit.media.funf.storage.NameValueDatabaseService"
+            android:enabled="true" >
+        </service>
+        
+        <service
+            android:name="edu.mit.media.openpds.client.funf.HttpsUploadService"
+            android:enabled="true" >
+        </service>
+
+        <receiver
+            android:name="edu.mit.media.openpds.client.funf.LauncherReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.DOCK_EVENT" />
+                <action android:name="android.intent.action.ACTION_SCREEN_ON" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="org.linkedpersonaldata.assistant" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="edu.mit.media.funf.FunfManager"
+            android:enabled="true" >
+            <meta-data
+                android:name="MainPipeline"
+                android:resource="@string/main_pipeline_config" />
+        </service>
+
+        <activity
+            android:name="org.linkedpersonaldata.assistant.PlaceListActivity"
+            android:label="@string/title_place_list" >
+        </activity>
+        <activity
+            android:name="org.linkedpersonaldata.assistant.PlaceDetailActivity"
+            android:label="@string/title_place_detail"
+            android:parentActivityName=".PlaceListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PlaceListActivity" />
+        </activity>
+        <service android:name="edu.mit.media.openpds.client.NotificationService" />
+        <service android:name="org.linkedpersonaldata.assistant.GCMIntentService" />
+    </application>
+
+</manifest>
