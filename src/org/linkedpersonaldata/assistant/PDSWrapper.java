@@ -25,7 +25,7 @@ import android.util.Log;
 public class PDSWrapper extends PersonalDataStore {
 	private AssistantPreferencesWrapper mPrefs;
 	
-	public PDSWrapper(Context context) {
+	public PDSWrapper(Context context) throws Exception {
 		super(context);
 		mPrefs = new AssistantPreferencesWrapper(context);
 		assert(mPrefs.getAccessToken() != null && mPrefs.getPDSLocation() != null && mPrefs.getUUID() != null);
@@ -48,7 +48,8 @@ public class PDSWrapper extends PersonalDataStore {
 		sparqlBuilder.append("select distinct ?placeUri ?placeName ?reason ");
 		sparqlBuilder.append("where { ?s lpd:hasSuggestion ?suggestion . ");
 		sparqlBuilder.append(" ?suggestion spatial:Feature ?placeUri . ");
-		sparqlBuilder.append(" ?suggestion lpd:reason ?reason ");
+		sparqlBuilder.append(" ?suggestion lpd:reason ?reasonUri ");
+		sparqlBuilder.append(" ?reasonUri rdfs:label ?reason");
 		sparqlBuilder.append("  service <http://live.linkedgeodata.org/sparql> { ?placeUri rdfs:label ?placeName } }");
 		Uri.Builder requestUriBuilder = Uri.parse(getSparqlUrl()).buildUpon();
 		requestUriBuilder.appendQueryParameter("query", sparqlBuilder.toString());

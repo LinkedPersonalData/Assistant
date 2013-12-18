@@ -22,8 +22,13 @@ public class GCMIntentService extends GCMBaseIntentService {
 	protected void onRegistered(final Context context, final String regId) {
 		Log.v(getClass().getName(), "Device registered: regId = " + regId);
 
-		PDSWrapper pds = new PDSWrapper(context);
-		pds.registerGCMDevice(regId);		
+		try {
+			PDSWrapper pds = new PDSWrapper(context);
+			pds.registerGCMDevice(regId);		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	

@@ -39,14 +39,17 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		AssistantPreferencesWrapper prefs = new AssistantPreferencesWrapper(this);
 		
-		String token = prefs.getAccessToken();
-		String uuid = prefs.getUUID();
-		String pdsLocation = prefs.getPDSLocation();
+		PDSWrapper pds = null;
 		
-		if (token != null && uuid != null && pdsLocation != null) {
+		try {
+			pds = new PDSWrapper(this);
+		} catch (Exception ex) {
+			
+		}
+		
+		if (pds != null) {
 			setContentView(R.layout.activity_main);
 			
-			final PDSWrapper pds = new PDSWrapper(this);
 			String placesUrl = pds.buildAbsoluteUrl(R.string.places_relative_url);		
 			
 			Intent placeIntent = getIntent();
@@ -67,10 +70,11 @@ public class MainActivity extends FragmentActivity {
 			//notificationManager.notify(1, builder.build());
 				
 			// TODO: make this not suck
+			final PDSWrapper localPds = pds;
 			new Thread() {				
 				@Override
 				public void run() {
-					suggestedPlaces = pds.getSuggestedPlaces();					
+					suggestedPlaces = localPds.getSuggestedPlaces();					
 				}
 			}.start();
 		

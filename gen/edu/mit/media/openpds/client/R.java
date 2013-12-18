@@ -7,32 +7,32 @@
 package edu.mit.media.openpds.client;
 
 public final class R {
-	public static final class style {
-		public static final int AppTheme = 0x7f050001;
-		public static final int AppBaseTheme = 0x7f050000;
-	}
-	public static final class string {
-		public static final int password_prefs_key = 0x7f040004;
-		public static final int registry_url = 0x7f040007;
-		public static final int userinfo_relative_url = 0x7f04000a;
-		public static final int focus_relative_url = 0x7f04000f;
-		public static final int clients_relative_url = 0x7f040008;
-		public static final int places_relative_url = 0x7f040011;
-		public static final int prefs_file = 0x7f040000;
-		public static final int activity_relative_url = 0x7f04000d;
-		public static final int login_relative_url = 0x7f040005;
-		public static final int sharing_relative_url = 0x7f04000c;
-		public static final int refresh_token_prefs_key = 0x7f040002;
-		public static final int social_relative_url = 0x7f04000e;
-		public static final int token_relative_url = 0x7f040009;
-		public static final int notification_api_relative_url = 0x7f040010;
-		public static final int radial_relative_url = 0x7f04000b;
-		public static final int token_expiration_time_prefs_key = 0x7f040003;
-		public static final int access_token_prefs_key = 0x7f040001;
-		public static final int signup_relative_url = 0x7f040006;
-		public static final int device_api_relative_url = 0x7f040012;
-	}
 	public static final class drawable {
 		public static final int ic_launcher = 0x7f020000;
+	}
+	public static final class string {
+		public static final int access_token_prefs_key = 0x7f040001;
+		public static final int activity_relative_url = 0x7f04000d;
+		public static final int clients_relative_url = 0x7f040008;
+		public static final int device_api_relative_url = 0x7f040012;
+		public static final int focus_relative_url = 0x7f04000f;
+		public static final int login_relative_url = 0x7f040005;
+		public static final int notification_api_relative_url = 0x7f040010;
+		public static final int password_prefs_key = 0x7f040004;
+		public static final int places_relative_url = 0x7f040011;
+		public static final int prefs_file = 0x7f040000;
+		public static final int radial_relative_url = 0x7f04000b;
+		public static final int refresh_token_prefs_key = 0x7f040002;
+		public static final int registry_url = 0x7f040007;
+		public static final int sharing_relative_url = 0x7f04000c;
+		public static final int signup_relative_url = 0x7f040006;
+		public static final int social_relative_url = 0x7f04000e;
+		public static final int token_expiration_time_prefs_key = 0x7f040003;
+		public static final int token_relative_url = 0x7f040009;
+		public static final int userinfo_relative_url = 0x7f04000a;
+	}
+	public static final class style {
+		public static final int AppBaseTheme = 0x7f050000;
+		public static final int AppTheme = 0x7f050001;
 	}
 }
