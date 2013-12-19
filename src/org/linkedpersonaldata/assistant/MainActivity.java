@@ -38,7 +38,7 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AssistantPreferencesWrapper prefs = new AssistantPreferencesWrapper(this);
-		
+		// Super cool comment
 		PDSWrapper pds = null;
 		
 		try {
