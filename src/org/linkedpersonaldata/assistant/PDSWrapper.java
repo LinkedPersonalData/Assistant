@@ -14,7 +14,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.android.gcm.GCMRegistrar;
 import com.google.gson.JsonObject;
 
 import edu.mit.media.openpds.client.PersonalDataStore;
